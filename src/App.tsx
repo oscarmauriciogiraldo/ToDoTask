@@ -53,6 +53,12 @@ const App = (): React.JSX.Element => {
     setFilterSelected(filter)
   }
 
+  /**@description borrar tareas completadas */
+  const handleRemoveAllCompleted = (): void => {
+    const newTodos = todos.filter(todo => !todo.completed)
+    setTodos(newTodos)
+  }
+
   const activeCount = todos.filter(todo => !todo.completed).length
   const completedCount = todos.length - activeCount
 
@@ -74,7 +80,7 @@ const App = (): React.JSX.Element => {
         activeCount={activeCount}
         completedCount={completedCount}
         filterSelected={filterSelected}
-        onClearCompleted={() => {}} 
+        onClearCompleted={handleRemoveAllCompleted} 
         handleFilterChange={handleFilterChange}
       />
     </div>

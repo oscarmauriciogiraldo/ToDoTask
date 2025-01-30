@@ -28,6 +28,16 @@ export const FilterPanel: React.FC<Props> = ({
                 filterSelected={filterSelected}
                 onFilterChange={handleFilterChange}
             />
+            {
+                completedCount > 0 &&(
+                    <button
+                        className="clear-completed"
+                        onClick={onClearCompleted}
+                    >
+                        Borrar task competadas
+                    </button>
+                )
+            }
         </div>
     )
 }
