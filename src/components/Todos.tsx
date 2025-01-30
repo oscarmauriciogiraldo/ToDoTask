@@ -1,12 +1,5 @@
-import React, { useState } from 'react'
-
-interface Todo {
-    id: string
-    title: string
-    completed: boolean
-}
-
-type ListOfTodos = Todo[]
+import React from 'react'
+import {type ListOfTodos } from '../types';
 
 interface Props {
     todos: ListOfTodos
@@ -16,8 +9,13 @@ export const Todos: React.FC<Props> = ({ todos }) =>{
     return (
         <ul>
             {todos.map(todo => (
-                <li key={todo.id}>
-                    {todo.title}
+                <li key={todo.id} className={`${todo.completed ? 'completed' : ''}`}>
+                    <Todo
+                        key={todo.id}
+                        id={todo.id}
+                        title={todo.title}
+                        completed={todo.completed} 
+                    />
                 </li>
             ))}
         </ul>
