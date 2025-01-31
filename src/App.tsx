@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Todos } from './components/Todos'
-import {  FilterValue, type TodoId, type Todo as TodoType } from './types';
+import { FilterValue, type TodoId, type Todo as TodoType, TodoTitle } from './types';
 import { TODO_FILTERS } from './const';
 import { FilterPanel } from './components/FilterPanel';
 import styles from './App.module.scss'
+import { Header } from './components/Header';
 
 const mockTodos = [
   {
@@ -69,10 +70,22 @@ const App = (): React.JSX.Element => {
     if (filterSelected === TODO_FILTERS.COMPLETED) return todo.completed
     return todo
   })
+
+  const handleAddTodo = ({title}: TodoTitle): void => {
+    const newTodo = {
+      title,
+      id: crypto.randomUUID(),
+      completed: false
+    }
+
+    const newTodos = [...todos, newTodo]
+    setTodos(newTodos)
+  }
   
   return (
     /* class name instalada todoapp */
     <div className={styles.container}>
+      <Header onAddTodo={handleAddTodo}/>
       <div className={styles.containerTask}>
         <Todos 
           onToggleCompleteTodo={handleComplete}
