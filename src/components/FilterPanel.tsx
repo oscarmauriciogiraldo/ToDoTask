@@ -1,6 +1,7 @@
 import React from "react";
 import { Filters } from "./Filters";
 import { type FilterValue } from "../types";
+import styles from './FilterPanel.module.scss'
 
 
 interface Props {
@@ -20,9 +21,10 @@ export const FilterPanel: React.FC<Props> = ({
 }) => {
     return(
         /* TODO: styles, responsive desing */
-        <div className="footer">
-            <span className="todo-count">
-                <strong>{activeCount}</strong> tasks
+        /* styles instalados "footer" */
+        <div className={styles.contentPanel}>
+            <span className={styles.countTask}>
+                Tasks por hacer: <strong>{activeCount}</strong>
             </span>
             <Filters 
                 filterSelected={filterSelected}

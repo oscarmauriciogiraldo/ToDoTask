@@ -3,6 +3,7 @@ import { Todos } from './components/Todos'
 import {  FilterValue, type TodoId, type Todo as TodoType } from './types';
 import { TODO_FILTERS } from './const';
 import { FilterPanel } from './components/FilterPanel';
+import styles from './App.module.scss'
 
 const mockTodos = [
   {
@@ -70,12 +71,15 @@ const App = (): React.JSX.Element => {
   })
   
   return (
-    <div className="todoapp">
-      <Todos 
-        onToggleCompleteTodo={handleComplete}
-        onRemoveTodo={handleRemove}
-        todos={filterTodos} 
-      />
+    /* class name instalada todoapp */
+    <div className={styles.container}>
+      <div className={styles.containerTask}>
+        <Todos 
+          onToggleCompleteTodo={handleComplete}
+          onRemoveTodo={handleRemove}
+          todos={filterTodos} 
+        />
+      </div>
       <FilterPanel
         activeCount={activeCount}
         completedCount={completedCount}

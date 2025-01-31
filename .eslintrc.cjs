@@ -21,5 +21,14 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    test: /\.s[ac]ss$/i,
+    use: [
+      // Crea el nodo "style" de JS Strings
+      "style-loader",
+      // Convierte CSS a CommonJS
+      "css-loader",
+      // Compila los estilos Sass a css
+      "sass-loader",
+    ],
   },
 }
